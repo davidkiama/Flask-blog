@@ -5,10 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}} ">
     <title>Flask Blog</title>
 </head>
 
 <body>
+    <div id="container">
+
+        <header class="header">
+            <h1>Blog</h1>
+
+        </header>
+
+        <main class="main">
+
+            <aside class="sidebar">
+                <p>Sidebar</p>
+
+            </aside>
+            <section class="content">
+                <p>Main</p>
+
+            </section>
+
+            <aside class="quote">
+                <p>quote</p>
+            </aside>
+
+
+        </main>
+
+        <footer class="footer">
+            <!--  -->
+        </footer>
+    </div>
+
+
     {% block content %}
     {% endblock %}
 </body>
