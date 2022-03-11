@@ -13,36 +13,36 @@
     <div id="container">
 
         <header class="header">
-            <h1>Blog</h1>
+
+            <h1 class="logo_name">
+                <a href="{{url_for('main.index')}}">Blog</a>
+            </h1>
+
+            <nav class="navbar">
+                <a href="{{ url_for('auth.login') }}" class="navbar-item btn">
+                    Login
+                </a>
+
+                <a href="{{ url_for('auth.signup') }}" class="navbar-item btn">
+                    Sign Up
+                </a>
+
+
+            </nav>
 
         </header>
 
         <main class="main">
 
-            <aside class="sidebar">
-                <p>Sidebar</p>
-
-            </aside>
-            <section class="content">
-                <p>Main</p>
-
-            </section>
-
-            <aside class="quote">
-                <p>quote</p>
-            </aside>
+            {% block content %}
+            {% endblock %}
 
 
         </main>
 
-        <footer class="footer">
-            <!--  -->
-        </footer>
     </div>
 
 
-    {% block content %}
-    {% endblock %}
 </body>
 
 </html>
