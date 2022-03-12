@@ -21,5 +21,5 @@ class Blog(db.Model):
     content = db.Column(db.String(1000))
     category = db.Column(db.String(100))
     date_posted = db.Column(db.DateTime, default=db.func.now())
-    author = db.Column(db.Interger, db.ForeignKey(
+    author = db.Column(db.Integer, db.ForeignKey(
         'user.id', ondelete='CASCADE'), nullable=False)
