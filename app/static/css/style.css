@@ -191,8 +191,8 @@ a {
 }
 
 .profile-img {
-  width: 10rem;
-  height: 10rem;
+  width: 8rem;
+  height: 8rem;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -225,4 +225,11 @@ a {
   padding-right: 4rem;
   display: flex;
   justify-content: space-between;
+}
+
+/* Profile page  */
+.user-profile__img {
+  height: 9rem;
+  width: 9rem;
+  border-radius: 50%;
 }

@@ -13,11 +13,11 @@
     {% endif %}
     {% endwith %}
     <form method="POST" action="/login" class="auth" autocomplete="off">
-        <label for="email">Email</label>
-        <input type="email" name="email" class="auth__input" autocomplete="false">
+        <label for="username">Username</label>
+        <input required type="text" name="username" class="auth__input">
 
         <label for=" password">Password</label>
-        <input type="password" name="password" class="auth__input">
+        <input required type="password" name="password" class="auth__input">
 
         <label class="checkbox">
             <input type="checkbox" name="remember">
