@@ -11,7 +11,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(100), unique=True)
     username = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
-    profile_pic = db.Column(db.String(), nullable=False, default='default.jpg')
+    profile_pic = db.Column(db.String(), nullable=False, default='default.svg')
     blogs = db.relationship('Blog', backref='user', passive_deletes=True)
 
 

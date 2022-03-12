@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% import 'macros.html' as macro %}
+
 {% block content %}
 
 
@@ -9,139 +11,18 @@
 </aside>
 
 <section class="content">
-    <div class="posts">
-        <div class="post">
-            <img src="../static/img/profile.jpg" alt="Profile Img" class="profile-img">
-            <div class="post-info">
-                <div class="post__header">
-                    <span class="post__author">@username </span>
-                    <span class="post__date">Mar 10</span>
-                </div>
-
-                <h3 class="post__title">Post Title Heading</h3>
-                <p class="post__content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia vero
-                    sapiente consequatur rerum tempore nostrum delectus hic officia!
-                    Accusantium, quia ducimus. Molestiae facere deleniti recusandae, nemo
-                    tenetur obcaecati eaque unde!
-                </p>
-                <div class="post__footer">
-
-                    <a href="#" class="post__category">#technology</a>
-                    <p class="post__comments">3 Comments</p>
-                </div>
 
 
-            </div>
+    {% if blogs %}
 
-        </div>
+    {{macro.displayBlogs(blogs)}}
 
-        <div class="post">
-            <img src="../static/img/profile.jpg" alt="Profile Img" class="profile-img">
-            <div class="post-info">
-                <div class="post__header">
-                    <span class="post__author">@username </span>
-                    <span class="post__date">Mar 10</span>
-                </div>
+    {% else %}
+    <p>No blogs </p>
 
-                <h3 class="post__title">Post Title Heading</h3>
-                <p class="post__content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia vero
-                    sapiente consequatur rerum tempore nostrum delectus hic officia!
-                    Accusantium, quia ducimus. Molestiae facere deleniti recusandae, nemo
-                    tenetur obcaecati eaque unde!
-                </p>
-                <div class="post__footer">
-
-                    <a href="#" class="post__category">#technology</a>
-                    <p class="post__comments">3 Comments</p>
-                </div>
+    {% endif %}
 
 
-            </div>
-
-        </div>
-
-        <div class="post">
-            <img src="../static/img/profile.jpg" alt="Profile Img" class="profile-img">
-            <div class="post-info">
-                <div class="post__header">
-                    <span class="post__author">@username </span>
-                    <span class="post__date">Mar 10</span>
-                </div>
-
-                <h3 class="post__title">Post Title Heading</h3>
-                <p class="post__content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia vero
-                    sapiente consequatur rerum tempore nostrum delectus hic officia!
-                    Accusantium, quia ducimus. Molestiae facere deleniti recusandae, nemo
-                    tenetur obcaecati eaque unde!
-                </p>
-                <div class="post__footer">
-
-                    <a href="#" class="post__category">#technology</a>
-                    <p class="post__comments">3 Comments</p>
-                </div>
-
-
-            </div>
-
-        </div>
-
-        <div class="post">
-            <img src="../static/img/profile.jpg" alt="Profile Img" class="profile-img">
-            <div class="post-info">
-                <div class="post__header">
-                    <span class="post__author">@username </span>
-                    <span class="post__date">Mar 10</span>
-                </div>
-
-                <h3 class="post__title">Post Title Heading</h3>
-                <p class="post__content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia vero
-                    sapiente consequatur rerum tempore nostrum delectus hic officia!
-                    Accusantium, quia ducimus. Molestiae facere deleniti recusandae, nemo
-                    tenetur obcaecati eaque unde!
-                </p>
-                <div class="post__footer">
-
-                    <a href="#" class="post__category">#technology</a>
-                    <p class="post__comments">3 Comments</p>
-                </div>
-
-
-            </div>
-
-        </div>
-
-        <div class="post">
-            <img src="../static/img/profile.jpg" alt="Profile Img" class="profile-img">
-            <div class="post-info">
-                <div class="post__header">
-                    <span class="post__author">@username </span>
-                    <span class="post__date">Mar 10</span>
-                </div>
-
-                <h3 class="post__title">Post Title Heading</h3>
-                <p class="post__content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia vero
-                    sapiente consequatur rerum tempore nostrum delectus hic officia!
-                    Accusantium, quia ducimus. Molestiae facere deleniti recusandae, nemo
-                    tenetur obcaecati eaque unde!
-                </p>
-                <div class="post__footer">
-
-                    <a href="#" class="post__category">#technology</a>
-                    <p class="post__comments">3 Comments</p>
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-    </div>
 </section>
 
 <aside class="quote">
