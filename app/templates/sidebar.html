@@ -1,0 +1,23 @@
+<h4 class="sidebar__title">
+    Categories
+</h4>
+
+<div class="hashtags">
+    <a href="#" class="hashtag">#science</a>
+    <a href="#" class="hashtag">#blockchain</a>
+    <a href="#" class="hashtag">#technology</a>
+    <a href="#" class="hashtag">#ukraine</a>
+    <a href="#" class="hashtag">#education</a>
+    <a href="#" class="hashtag">#grammys</a>
+    <a href="#" class="hashtag">#javascript</a>
+</div>
+
+
+{% if current_user.is_authenticated %}
+
+<a href="{{ url_for('auth.logout') }}" class="logout btn">
+    <img src="{{ url_for('static', filename='img/logout.svg') }}" class="logout-icon">
+    Logout
+</a>
+
+{% endif %}

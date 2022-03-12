@@ -23,6 +23,12 @@
                     Login
                 </a>
 
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('main.create_blog') }}" class="navbar-item btn">
+                    Create blog
+                </a>
+                {% endif %}
+
                 <a href="{{ url_for('auth.signup') }}" class="navbar-item btn">
                     Sign Up
                 </a>

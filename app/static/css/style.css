@@ -73,6 +73,22 @@ a {
   color: var(--color-secondary);
 }
 
+.logout {
+  margin-top: 100%;
+  display: flex;
+  width: min-content;
+  padding: 0.8rem 2rem;
+}
+
+.logout:hover {
+  color: rgba(255, 0, 0, 0.794);
+}
+
+.logout-icon {
+  height: 2.5rem;
+  padding-right: 1rem;
+}
+
 .header {
   flex: 0 0 10vh;
   background-color: hsl(0, 0%, 97%, 0.95);
