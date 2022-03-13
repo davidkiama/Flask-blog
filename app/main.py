@@ -115,4 +115,4 @@ def create_comment(blog_id):
         db.session.add(comment)
         db.session.commit()
 
-    return render_template('blog.html', blog=blog)
+    return redirect(url_for('main.blog', blog_id=blog.id))

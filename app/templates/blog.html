@@ -9,29 +9,44 @@
 </aside>
 
 
-<section class="content">
-    <div class="blog-det">
-        <h3 class="heading-2 blog-det__title">{{blog.title}} </h3>
-        <p class="blog-det__author"> {{blog.user.username}} </p>
-        <span class="blog-det__posted">{{blog.date_posted.strftime('%b %d %I:%M %p' )}}
-        </span>
-        <p class="blog-det__content">{{blog.content}}</p>
-    </div>
+<section class="content ">
+    <div class="blog-det-container">
 
-    <div class="comment">
-        <form action="/create-comment/{{blog.id}}" method="POST">
-            <label for="full_name">Enter full names</label>
-            <input required type="text" name="name" placeholder="Enter name">
+        <div class="blog-det">
+            <h3 class="heading-2 blog-det__title">{{blog.title}} </h3>
+            <p class="blog-det__author">Author: {{blog.user.username}} </p>
+            <span class="blog-det__posted">
+                Posted: {{blog.date_posted.strftime('%b %d %I:%M%p')}}
+            </span>
+            <p class="blog-det__content">{{blog.content}}</p>
+        </div>
 
-            <input required type="text" name="comment" placeholder="Add comment">
-            <button type="submit" class="btn">leave comment</button>
-        </form>
-        {% for comment in blog.comments %}
-        <p>{{comment.name}}: {{comment.content}} </p>
-        {% endfor %}
-    </div>
+        <div class="comment">
+            <h3 class="comment-title btn">Leave comment</h3>
+            <form action="/create-comment/{{blog.id}}" method="POST">
+                <label for="full_name">Full name</label>
+                <input required type="text" name="name" placeholder="Full name...">
 
+                <label for="comment">Add comment</label>
+                <textarea name="comment" cols="40" rows="8"
+                    placeholder="Add comment..."></textarea>
 
+                <button type="submit" class="btn">Comment</button>
+            </form>
+
+            <div class="comments-section">
+                {% for comment in blog.comments %}
+                <div class="comment-item">
+                    <h4 class="comment-item__name">{{comment.name}}</h4>
+                    <p class="comment-item__content">{{comment.content}}</p>
+                    <span class="comment-item__posted">
+                        {{comment.date_posted.strftime('%b %d %I:%M%p')}}
+                    </span>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
 </section>
 
 <aside class="quote">
