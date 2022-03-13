@@ -6,9 +6,12 @@ from flask_migrate import Migrate
 
 from .config import config_options
 
+UPLOAD_FOLDER = 'app/static/img'
+
 
 app = Flask(__name__)
 app.config.from_object(config_options['development'])
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)

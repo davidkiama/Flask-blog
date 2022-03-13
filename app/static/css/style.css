@@ -109,9 +109,29 @@ a {
   color: black;
 }
 
+.navbar {
+  display: flex;
+  align-items: center;
+  margin-right: 3rem;
+}
+
 .navbar-item {
   margin: 0 1rem;
   font-size: 2rem;
+}
+
+.nav-profile__img {
+  margin-left: 3rem;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+
+  transition: all 0.2s;
+}
+
+.nav-profile__img:hover {
+  filter: blur(2px);
 }
 
 .main {
@@ -249,10 +269,36 @@ a {
 }
 
 /* Profile page  */
+
+.profile-image {
+  margin-top: -20rem;
+  position: relative;
+}
+
 .user-profile__img {
-  height: 9rem;
-  width: 9rem;
+  width: 8rem;
+  height: 8rem;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.edit-icon--profile__img {
+  position: absolute;
+  left: 1rem;
+
+  height: 2rem;
+  width: 2rem;
+
+  transition: all 0.2s;
+}
+.profile-image:hover .edit-icon--profile__img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.profile-image:hover .user-profile__img {
+  filter: brightness(0.9);
+  filter: blur(2px);
 }
 
 /* dropdown */

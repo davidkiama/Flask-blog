@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<aside class="sidebar">
 
-    <img src="{{url_for('static', filename='img/default.svg')}} " alt="Profile Img"
-        class="user-profile__img">
+<aside class="sidebar">
+    {% include 'sidebar.html' %}
+
+    <div class="profile-image">
+
+        <img src="../static/img/{{current_user.profile_pic}}" alt="Profile Img"
+            class="user-profile__img">
+
+        <a href="{{url_for('main.upload_profile_pic')}} ">
+            <img src="{{url_for('static', filename='img/edit-pen.svg')}} " alt="Edit"
+                class="edit-icon--profile__img">
+
+        </a>
+
+    </div>
+
 
 </aside>
-
 {% endblock %}

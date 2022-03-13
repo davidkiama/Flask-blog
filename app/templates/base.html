@@ -24,6 +24,11 @@
                 <a href="{{ url_for('main.create_blog') }}" class="navbar-item btn">
                     Create blog
                 </a>
+
+                <a href="{{ url_for('main.profile') }}">
+                    <img src="../static/img/{{current_user.profile_pic}} "
+                        alt="Profile Img" class="nav-profile__img">
+                </a>
                 {% else %}
                 <a href="{{ url_for('auth.login') }}" class="navbar-item btn">
                     Login
