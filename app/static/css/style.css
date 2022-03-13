@@ -123,6 +123,7 @@ a {
 
 .sidebar {
   flex: 1 0 20%;
+  max-width: 20%;
   position: sticky;
   top: 10vh;
   height: min-content;
@@ -151,6 +152,7 @@ a {
 
 .quote {
   flex: 1 0 20%;
+  max-width: 20%;
   position: sticky;
   top: 11vh;
   margin: 0 1rem;

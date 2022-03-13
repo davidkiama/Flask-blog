@@ -1,9 +1,12 @@
+
+from crypt import methods
+from unicodedata import name
 from flask import Blueprint, flash, redirect, render_template, url_for, request
 from flask_login import login_required, current_user
 
 
 from app import db
-from .models import Blog
+from .models import Blog, Comment
 
 
 main = Blueprint('main', __name__)
@@ -40,9 +43,13 @@ def create_blog():
     return render_template('create_blog.html')
 
 
+# Helper functoion to check if blog exists
+
+
 @main.route('/update_blog/<blog_id>', methods=['GET', 'POST'])
 @login_required
 def update_blog(blog_id):
+
     blog = Blog.query.filter_by(id=blog_id).first()
 
     if not blog:
@@ -78,3 +85,34 @@ def delete_blog(blog_id):
     db.session.commit()
 
     return redirect(url_for('main.index'))
+
+
+@main.route('/blog/<blog_id>')
+def blog(blog_id):
+    blog = Blog.query.filter_by(id=blog_id).first()
+
+    if not blog:
+        flash('Blog does not exist')
+        return redirect(url_for('main.index'))
+
+    return render_template('blog.html', blog=blog)
+
+
+@main.route('/create-comment/<blog_id>', methods=['GET', 'POST'])
+def create_comment(blog_id):
+    blog = Blog.query.filter_by(id=blog_id).first()
+
+    if not blog:
+        flash('Blog does not exist')
+        return redirect(url_for('main.index'))
+
+    if request.method == 'POST':
+        username = request.form.get('name')
+        comment = request.form.get('comment')
+
+        comment = Comment(name=username, content=comment, blog_id=blog.id)
+
+        db.session.add(comment)
+        db.session.commit()
+
+    return render_template('blog.html', blog=blog)

@@ -13,6 +13,7 @@ class User(UserMixin, db.Model):
 
 
 class Blog(db.Model):
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     content = db.Column(db.String(1000))
@@ -20,3 +21,16 @@ class Blog(db.Model):
     date_posted = db.Column(db.DateTime, default=db.func.now())
     author = db.Column(db.Integer, db.ForeignKey(
         'user.id', ondelete='CASCADE'), nullable=False)
+
+    comments = db.relationship(
+        'Comment', backref='blog', passive_deletes=True)
+
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    content = db.Column(db.String(1000))
+    date_posted = db.Column(db.DateTime, default=db.func.now())
+
+    blog_id = db.Column(db.Integer, db.ForeignKey(
+        'blog.id', ondelete='CASCADE'), nullable=False)

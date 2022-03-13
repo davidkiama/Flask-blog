@@ -2,40 +2,46 @@
 
 <div class="posts">
     {% for blog in blogs %}
+
+
     <div class="post">
+        {% if blog.user.id == current_user.id %}
+        <div class="post-update">
+            <img src="../static/img/menu-dots.svg" alt="Update" class="update-icon">
+            <span class="post-update__container">
+                <a href="{{url_for('main.update_blog', blog_id=blog.id)}}"
+                    class="post-update__item">Edit</a>
+                <a href="{{url_for('main.delete_blog', blog_id=blog.id)}}"
+                    class="post-update__item">Delete</a>
+            </span>
+        </div>
+        {% endif %}
+
 
         <img src='../static/img/{{blog.user.profile_pic}}' )}} alt="Profile Img"
             class="profile-img">
 
         <div class="post-info">
+
             <div class="post__header">
                 <span class="post__author">@{{blog.user.username}} </span>
-                <span class="post__date">{{blog.date_posted.strftime('%b %d')}} </span>
+                <span class="post__date">{{blog.date_posted.strftime('%b %d')}}
+                </span>
 
-                {% if blog.user.id == current_user.id %}
-                <div class="post-update">
-                    <img src="../static/img/menu-dots.svg" alt="Update"
-                        class="update-icon">
-                    <span class="post-update__container">
-                        <a href="{{url_for('main.update_blog', blog_id=blog.id)}}"
-                            class="post-update__item">Edit</a>
-                        <a href="{{url_for('main.delete_blog', blog_id=blog.id)}}"
-                            class="post-update__item">Delete</a>
-                    </span>
-                </div>
-                {% endif %}
 
             </div>
+            <a href="{{url_for('main.blog', blog_id=blog.id)}} ">
+                <h3 class="post__title">{{blog.title}} </h3>
+                <p class="post__content">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia vero
+                    sapiente consequatur rerum tempore nostrum delectus hic officia!
+                    Accusantium, quia ducimus. Molestiae facere deleniti recusandae, nemo
+                    tenetur obcaecati eaque unde!
+                </p>
+            </a>
 
-            <h3 class="post__title">{{blog.title}} </h3>
-            <p class="post__content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia vero
-                sapiente consequatur rerum tempore nostrum delectus hic officia!
-                Accusantium, quia ducimus. Molestiae facere deleniti recusandae, nemo
-                tenetur obcaecati eaque unde!
-            </p>
+
             <div class="post__footer">
-
                 <a href="#" class="post__category">#{{blog.category}} </a>
                 <p class="post__comments">3 Comments</p>
             </div>

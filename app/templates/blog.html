@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<aside class="sidebar">
+    {% include 'sidebar.html' %}
+</aside>
+
+
+<section class="content">
+    <div class="blog-det">
+        <h3 class="heading-2 blog-det__title">{{blog.title}} </h3>
+        <p class="blog-det__author"> {{blog.user.username}} </p>
+        <span class="blog-det__posted">{{blog.date_posted.strftime('%b %d %I:%M %p' )}}
+        </span>
+        <p class="blog-det__content">{{blog.content}}</p>
+    </div>
+
+    <div class="comment">
+        <form action="/create-comment/{{blog.id}}" method="POST">
+            <label for="full_name">Enter full names</label>
+            <input required type="text" name="name" placeholder="Enter name">
+
+            <input required type="text" name="comment" placeholder="Add comment">
+            <button type="submit" class="btn">leave comment</button>
+        </form>
+        {% for comment in blog.comments %}
+        <p>{{comment.name}}: {{comment.content}} </p>
+        {% endfor %}
+    </div>
+
+
+</section>
+
+<aside class="quote">
+    <p class="quote__content">
+        Lorem ipsum dolor sit amet,adipisicing elit. Asperiores sint eligendi
+        illo obcaecati nihil nulla a nobis sapiente, expedita provident,
+        cupiditate eveniet iste nemo! Temporibus unde id expedita.
+    </p>
+
+    <span class="quote__author">~ Jack Bauer</span>
+
+</aside>
+
+
+{% endblock %}
