@@ -238,7 +238,7 @@ a {
 .post__header,
 .post__footer {
   margin-top: 1rem;
-  padding-right: 4rem;
+  padding-right: 8rem;
   display: flex;
   justify-content: space-between;
 }

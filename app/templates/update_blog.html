@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="/update_blog/{{blog.id}} " method="POST" class="form-post">
+
+    <label for="title">Blog title</label>
+    <input type="text" name="title" placeholder="Blog title" value="{{blog.title}} ">
+
+    <textarea name="content" cols="30" rows="10" value="{{blog.content}} "
+        placeholder="enter content..."></textarea>
+
+    <input type="text" name="category" placeholder="Enter category"
+        value="{{blog.category}} ">
+
+    <button type="submit" class="btn">Update</button>
+
+
+</form>
+{% endblock %}

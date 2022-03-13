@@ -17,8 +17,6 @@ def create_app(config_name):
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
-    # app.config.from_object(config_options[config_name])
-
     @login_manager.user_loader
     def load_user(user_id):
         # since the user_id is the primary key, we use it to query
