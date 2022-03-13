@@ -116,3 +116,18 @@ def create_comment(blog_id):
         db.session.commit()
 
     return redirect(url_for('main.blog', blog_id=blog.id))
+
+
+@main.route('/delete-comment/<comment_id>', methods=['GET', 'POST'])
+@login_required
+def delete_comment(comment_id):
+    comment = Comment.query.filter_by(id=comment_id).first()
+
+    if not comment:
+        flash('Comment does not exist')
+        return redirect(url_for('main.index'))
+
+    db.session.delete(comment)
+    db.session.commit()
+
+    return redirect(url_for('main.blog', blog_id=comment.blog_id))

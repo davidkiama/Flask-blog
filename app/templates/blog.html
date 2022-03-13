@@ -37,6 +37,13 @@
             <div class="comments-section">
                 {% for comment in blog.comments %}
                 <div class="comment-item">
+                    {% if blog.user.id == current_user.id %}
+                    <a href="{{url_for('main.delete_comment', comment_id = comment.id)}}"
+                        class="comment-item__delete ">
+                        Delete
+                    </a>
+                    {% endif %}
+
                     <h4 class="comment-item__name">{{comment.name}}</h4>
                     <p class="comment-item__content">{{comment.content}}</p>
                     <span class="comment-item__posted">

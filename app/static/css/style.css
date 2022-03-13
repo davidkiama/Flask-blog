@@ -357,6 +357,14 @@ a {
   border-bottom: 0.1rem solid var(--color-navy);
 }
 
+.comment-item {
+  margin: 1rem auto;
+  padding: 1rem;
+  border-top: 0.1rem solid var(--color-navy);
+
+  position: relative;
+}
+
 .comment-item__content {
   font-size: 1.7rem;
 }
@@ -366,8 +374,19 @@ a {
   font-weight: 200;
 }
 
-.comment-item {
-  margin: 1rem auto;
-  padding: 1rem;
-  border-top: 0.1rem solid var(--color-navy);
+.comment-item__delete {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.2rem;
+
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  background-color: var(--color-navy);
+  color: skyblue;
+
+  transition: color 0.2s;
+}
+
+.comment-item__delete:hover {
+  color: red;
 }
