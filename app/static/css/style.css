@@ -157,6 +157,7 @@ a {
   top: 11vh;
   margin: 0 1rem;
   border-radius: 1rem;
+  font-weight: lighter;
 
   padding: 1rem;
   height: min-content;

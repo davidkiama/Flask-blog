@@ -1,6 +1,7 @@
 
-from crypt import methods
-from unicodedata import name
+import urllib
+import json
+
 from flask import Blueprint, flash, redirect, render_template, url_for, request
 from flask_login import login_required, current_user
 
@@ -11,11 +12,23 @@ from .models import Blog, Comment
 
 main = Blueprint('main', __name__)
 
+# helper functions to get random quotes
+
+
+def get_random_quote():
+    quote_url = 'http://quotes.stormconsultancy.co.uk/random.json'
+    with urllib.request.urlopen(quote_url) as url:
+        quote_data = url.read()
+        quote = json.loads(quote_data)
+
+        return quote
+
 
 @main.route('/')
 def index():
     blogs = Blog.query.all()
-    return render_template('index.html', blogs=blogs)
+    quote = get_random_quote()
+    return render_template('index.html', blogs=blogs, quote=quote)
 
 
 @main.route('/profile')
@@ -41,9 +54,6 @@ def create_blog():
         return redirect(url_for("main.index"))
 
     return render_template('create_blog.html')
-
-
-# Helper functoion to check if blog exists
 
 
 @main.route('/update_blog/<blog_id>', methods=['GET', 'POST'])
@@ -91,11 +101,13 @@ def delete_blog(blog_id):
 def blog(blog_id):
     blog = Blog.query.filter_by(id=blog_id).first()
 
+    quote = get_random_quote()
+
     if not blog:
         flash('Blog does not exist')
         return redirect(url_for('main.index'))
 
-    return render_template('blog.html', blog=blog)
+    return render_template('blog.html', blog=blog, quote=quote)
 
 
 @main.route('/create-comment/<blog_id>', methods=['GET', 'POST'])
