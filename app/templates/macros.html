@@ -13,11 +13,18 @@
                 <span class="post__date">{{blog.date_posted.strftime('%b %d')}} </span>
 
                 {% if blog.user.id == current_user.id %}
-                <a href="{{url_for('main.update_blog', blog_id=blog.id)}}"
-                    class="post__edit btn">Edit</a>
-                <a href="{{url_for('main.delete_blog', blog_id=blog.id)}}"
-                    class="post__delete btn">Delete</a>
+                <div class="post-update">
+                    <img src="../static/img/menu-dots.svg" alt="Update"
+                        class="update-icon">
+                    <span class="post-update__container">
+                        <a href="{{url_for('main.update_blog', blog_id=blog.id)}}"
+                            class="post-update__item">Edit</a>
+                        <a href="{{url_for('main.delete_blog', blog_id=blog.id)}}"
+                            class="post-update__item">Delete</a>
+                    </span>
+                </div>
                 {% endif %}
+
             </div>
 
             <h3 class="post__title">{{blog.title}} </h3>
@@ -39,6 +46,33 @@
     </div>
 
     {% endfor %}
+
+    <script>
+        const dotIcons = document.querySelectorAll('.update-icon');
+
+        dotIcons.forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                // Remove the active class from all icons
+                document.querySelectorAll('.post-update__container').forEach(container => {
+                    container.classList.remove('hidden');
+                });
+
+                e.preventDefault();
+                const postUpdate = e.target.parentElement;
+                const postUpdateContainer = postUpdate.querySelector('.post-update__container');
+                postUpdateContainer.classList.add('hidden');
+            });
+        });
+
+
+
+
+
+
+
+    </script>
+
+
 </div>
 
 

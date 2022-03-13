@@ -1,8 +1,5 @@
 
-from enum import unique
-from unicodedata import category
 from flask_login import UserMixin
-from sqlalchemy import JSON
 from app import db
 
 
