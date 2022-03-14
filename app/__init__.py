@@ -19,7 +19,7 @@ migrate = Migrate(app, db)
 from .models import User
 
 
-def create_app(config_name):
+def create_app():
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
