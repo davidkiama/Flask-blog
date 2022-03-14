@@ -16,7 +16,7 @@ class Blog(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
-    content = db.Column(db.String(1000))
+    content = db.Column(db.String(5000))
     category = db.Column(db.String(100))
     date_posted = db.Column(db.DateTime, default=db.func.now())
     author = db.Column(db.Integer, db.ForeignKey(

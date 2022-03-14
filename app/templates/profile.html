@@ -1,23 +1,35 @@
 {% extends 'base.html' %}
+{% import "macros.html" as macro with context %}
 
 {% block content %}
 
 <aside class="sidebar">
     {% include 'sidebar.html' %}
 
-    <div class="profile-image">
+</aside>
 
-        <img src="../static/img/{{current_user.profile_pic}}" alt="Profile Img"
-            class="user-profile__img">
 
-        <a href="{{url_for('main.upload_profile_pic')}} ">
-            <img src="{{url_for('static', filename='img/edit-pen.svg')}} " alt="Edit"
-                class="edit-icon--profile__img">
+<section class="content">
 
-        </a>
 
-    </div>
+    {% if blogs %}
 
+    {{macro.displayBlogs(blogs)}}
+
+    {% else %}
+    <p>No blogs </p>
+
+    {% endif %}
+
+
+</section>
+
+<aside class="quote">
+    <p class="quote__content">
+        {{quote.quote}}
+    </p>
+
+    <span class="quote__author">~ {{quote.author}} </span>
 
 </aside>
 {% endblock %}

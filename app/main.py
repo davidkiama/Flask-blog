@@ -39,7 +39,10 @@ def index():
 
 @main.route('/profile')
 def profile():
-    return render_template('profile.html')
+    blogs = Blog.query.filter_by(author=current_user.id).all()
+    quote = get_random_quote()
+    page = 'profile'
+    return render_template('profile.html', blogs=blogs, quote=quote, page=page)
 
 
 @main.route('/create_blog', methods=['GET', 'POST'])
