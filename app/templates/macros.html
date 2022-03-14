@@ -42,7 +42,8 @@
 
 
             <div class="post__footer">
-                <a href="#" class="post__category">#{{blog.category}} </a>
+                <a href="{{ url_for('main.category', category=blog.category) }} "
+                    class="post__category">#{{blog.category}} </a>
                 <p class="post__comments">{{blog.comments | length}} Comments</p>
             </div>
 

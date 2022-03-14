@@ -32,8 +32,9 @@ def index():
 
     sorted_blogs = Blog.query.order_by(desc(Blog.date_posted)).all()
     blogs = Blog.query.all()
+
     quote = get_random_quote()
-    return render_template('index.html', blogs=blogs, quote=quote, sorted_blogs=sorted_blogs)
+    return render_template('index.html', blogs=blogs, quote=quote, sorted_blogs=sorted_blogs, )
 
 
 @main.route('/profile')
@@ -44,6 +45,7 @@ def profile():
 @main.route('/create_blog', methods=['GET', 'POST'])
 @login_required
 def create_blog():
+    quote = get_random_quote()
     if request.method == 'POST':
         title = request.form.get('title')
         content = request.form.get('content')
@@ -58,13 +60,13 @@ def create_blog():
 
         return redirect(url_for("main.index"))
 
-    return render_template('create_blog.html')
+    return render_template('create_blog.html', quote=quote)
 
 
 @main.route('/update_blog/<blog_id>', methods=['GET', 'POST'])
 @login_required
 def update_blog(blog_id):
-
+    quote = get_random_quote()
     blog = Blog.query.filter_by(id=blog_id).first()
 
     if not blog:
@@ -84,7 +86,7 @@ def update_blog(blog_id):
 
     # Auto fill the blog details
 
-    return render_template('update_blog.html', blog=blog, current_user=current_user)
+    return render_template('update_blog.html', blog=blog, current_user=current_user, quote=quote)
 
 
 @main.route('/delete_blog/<blog_id>', methods=['GET', 'POST'])
@@ -183,3 +185,18 @@ def upload_profile_pic():
         return redirect(url_for('main.profile'))
 
     return render_template('upload_profile_pic.html')
+
+
+@main.route('/category/<category>')
+def category(category):
+    quote = get_random_quote()
+    blogs = Blog.query.filter_by(category=category).all()
+    return render_template('category.html', blogs=blogs, category=category, quote=quote)
+
+
+# def sidebar():
+#     categories = Blog.category.query.all()
+#     print('*********************************************************')
+#     print(categories)
+
+#     return render_template('sidebar.html', categories=categories)

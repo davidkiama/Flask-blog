@@ -3,13 +3,13 @@
 </h4>
 
 <div class="hashtags">
-    <a href="#" class="hashtag">#science</a>
-    <a href="#" class="hashtag">#blockchain</a>
-    <a href="#" class="hashtag">#technology</a>
-    <a href="#" class="hashtag">#ukraine</a>
-    <a href="#" class="hashtag">#education</a>
-    <a href="#" class="hashtag">#grammys</a>
-    <a href="#" class="hashtag">#javascript</a>
+    {% for blog in blogs %}
+    <a href="/category/{{blog.category}}" class="hashtag">
+        #{{blog.category}}
+    </a>
+    {% endfor %}
+
+
 </div>
 
 

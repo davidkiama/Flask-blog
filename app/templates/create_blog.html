@@ -1,18 +1,40 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="/create_blog" method="POST" class="form-post">
 
-    <label for="title">Blog title</label>
-    <input type="text" name="title" placeholder="Blog title">
+<aside class="sidebar">
+    {% include 'sidebar.html' %}
+</aside>
 
-    <textarea name="content" cols="30" rows="10"
-        placeholder="enter content..."></textarea>
-
-    <input type="text" name="category" placeholder="Enter category">
-
-    <button type="submit" class="btn">Create</button>
+<section class="content">
 
 
-</form>
+    <form action="/create_blog" method="POST" class="blog-form">
+
+        <label for="title">Blog title</label>
+        <input type="text" name="title" placeholder="Blog title">
+
+        <label for="content">Enter content</label>
+        <input type="text" name="content" placeholder="Blog content..."
+            class="blog-form--content">
+
+
+        <input type="text" name="category" placeholder="Enter category">
+
+        <button type="submit" class="btn">Create</button>
+
+
+    </form>
+
+</section>
+
+
+<aside class="quote">
+    <p class="quote__content">
+        {{quote.quote}}
+    </p>
+
+    <span class="quote__author">~ {{quote.author}} </span>
+
+</aside>
 {% endblock %}
