@@ -28,9 +28,12 @@ def get_random_quote():
 
 @main.route('/')
 def index():
+    from sqlalchemy import desc
+
+    sorted_blogs = Blog.query.order_by(desc(Blog.date_posted)).all()
     blogs = Blog.query.all()
     quote = get_random_quote()
-    return render_template('index.html', blogs=blogs, quote=quote)
+    return render_template('index.html', blogs=blogs, quote=quote, sorted_blogs=sorted_blogs)
 
 
 @main.route('/profile')
